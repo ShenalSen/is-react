@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")).render(
       clientId="7HSPIiXQN5YS81ZSBNEJ0K74xmwa"
       baseUrl="https://localhost:9443"
       afterSignInUrl="http://localhost:5173"
-      afterSignOutUrl="http://localhost:5173/login"
+      afterSignOutUrl="http://localhost:5173"
     >
       <App />
     </AsgardeoProvider>
