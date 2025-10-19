@@ -1,25 +1,32 @@
-import { useAsgardeo } from '@asgardeo/react';
+import { SignedIn, SignedOut, SignInButton, SignOutButton, User, UserDropdown, UserProfile } from '@asgardeo/react'
 import './App.css'
 
-const AuthenticatedApp = () => {
-  const {
-    isSignedIn,
-    user,
-    signIn,
-    signOut,
-  } = useAsgardeo();
-
+function App() {
   return (
-    <div>
-      {isSignedIn && user ? (
-        <>
-          <button onClick={() => signOut()}>Sign Out</button>
-        </>
-      ) : (
-        <button onClick={() => signIn()}>Sign In</button>
-      )}
-    </div>
-  );
-};
+    <>
+      <header>
+        <SignedIn>
+          <UserDropdown />
+          <SignOutButton />
+        </SignedIn>
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
+      </header>
+      <main>
+        <SignedIn>
+          <User>
+            {(user) => (
+              <div>
+                <p>Welcome back, {user.userName || user.username || user.sub}</p>
+              </div>
+            )}
+          </User>
+          <UserProfile />
+        </SignedIn>
+      </main>
+    </>
+  )
+}
 
-export default AuthenticatedApp;
+export default App;
