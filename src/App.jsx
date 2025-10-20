@@ -41,7 +41,10 @@ function App() {
             <Route 
               path="/dashboard" 
               element={
-                <ProtectedRoute redirectTo="/signin">
+                <ProtectedRoute 
+                redirectTo="/signin"
+                loader={<div className="spinner">Loading...</div>}
+                >
                   <Dashboard />
                 </ProtectedRoute>
               } 
